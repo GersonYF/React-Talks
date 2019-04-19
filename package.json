@@ -1,0 +1,15 @@
+{
+  "name": "react-hooks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start-react-hooks": "mdx-deck deck_react_hooks.mdx"
+  },
+  "dependencies": {
+    "mdx-deck": "^2.0.9",
+    "mdx-deck-live-code": "^1.0.1",
+    "raw-loader": "^2.0.0",
+    "styled-components": "^4.2.0"
+  }
+}

@@ -1,0 +1,368 @@
+import {Image, Appear} from 'mdx-deck';
+import {Split, SplitRight} from 'mdx-deck/layouts';
+import {LiveCode} from 'mdx-deck-live-code';
+import Layout from './Layouts/Layout';
+import PodcastsSearch from './components/PodcastsSearch/index';
+import PodcastsSearchHooks from './components/PodcastsSearch/hooked';
+import ScreenResolution from './components/ScreenResolution/index';
+import ScreenResolutionHooks from './Components/ScreenResolution/hooked';
+
+export {yellow as theme} from 'mdx-deck/themes';
+
+export default Layout;
+
+# Introducción
+
+# a Hooks en React
+
+---
+
+# Acerca de mi
+
+### Gerson Yarce Franco
+
+_Desarrollador Full-stack_
+
+**@Nemohawk**
+
+https://www.fullstacklabs.co/team/gerson-yarce
+
+https://github.com/gersonyf
+
+---
+
+<Image src="images/react_img.png" size="cover" />
+
+---
+
+export default Layout;
+
+# ¿Qué es React?
+
+<div>
+  <Appear>
+    <p>Es una librería JavaScript para construir interfaces de usuario.</p>
+    <p>Declarativa</p>
+    <p>Basada en componentes</p>
+  </Appear>
+</div>
+
+---
+
+export default Layout;
+
+## Componentes
+
+<Appear>
+  <p>
+    Los componentes permiten separar la interfaz de usuario en piezas
+    independientes, reutilizables y pensar en cada pieza de forma aislada.
+  </p>
+</Appear>
+
+---
+
+export default Layout;
+
+### Componentes de clase
+
+<div>
+  <Appear>
+    <p>Estado</p>
+    <p>Ciclos de vida</p>
+  </Appear>
+</div>
+
+---
+
+export default Layout;
+
+<LiveCode
+  title="Componentes de clase"
+  code={`class InputClass extends React.Component {
+  constructor(){
+    this.state = {
+      query: '',
+      status: 'Cargando'
+    };
+  }
+  componentDidMount(){
+    this.setState({status: 'Listo'})
+  }
+  componentWillUnmount(){
+    window.alert('Adios');
+  }
+  render() {
+    return (
+      <>
+        <input
+          type="text"
+          onChange={evt => this.setState({
+            query: evt.target.value
+          })}
+          value={this.state.query}
+          style={{
+              height: '40px',
+              width: '80%',
+              fontSize: '20px'
+          }}
+        />
+        <h2>Hola, {this.state.query}</h2>
+        <h3>Estado: {this.state.status}</h3>
+      </>
+    );
+  }
+}
+    `}
+  size="fullscreen"
+  editorProps={{style: {fontSize: '0.5em', background: '#001628'}}}
+  previewProps={{style: {background: '#FD0', color: '#001628'}}}
+/>
+
+---
+
+export default Layout;
+
+### Componentes funcionales
+
+---
+
+export default Layout;
+
+<LiveCode
+  title="Componentes funcionales"
+  code={`({ 
+    title = 'Welcome', 
+    color = '#001628'
+}) => {
+    return (<h1 style={{color}}>{title}</h1>)
+}`}
+  size="fullscreen"
+  editorProps={{style: {fontSize: '0.4em', background: '#001628'}}}
+  previewProps={{style: {background: '#FFF'}}}
+/>
+
+---
+
+export default Layout;
+
+## Problemas generales
+
+<div>
+  <Appear>
+    <p>Componentes extensos.</p>
+    <p>Dificultad al compartir lógica de estado entre componentes.</p>
+    <p>Las clases son complejas.</p>
+  </Appear>
+</div>
+
+---
+
+export default Layout;
+
+## Componentes extensos
+
+---
+
+<Image src="images/complex_components.png" size="contain" />
+
+---
+
+export default Layout;
+
+## Dificultad al compartir lógica de estado entre componentes
+
+---
+
+<Image src="images/wrapper_hell.png" size="cover" />
+
+---
+
+export default Layout;
+
+## Las clases son complejas
+
+---
+
+<Image src="images/is_it_this.png" size="cover" />
+
+---
+
+<Image src="images/hooks_news.jpeg" size="cover" />
+
+---
+
+export default Layout;
+
+# Hooks
+
+<Appear>
+  <p>
+    Los Hooks son funciones que te permiten “enganchar” lógica o funcionalidades
+    como el estado y los ciclos de vida a los componentes funcionales.
+  </p>
+  <p>Completamente opcionales.</p>
+  <p>100% compatibles con versiones anteriores.</p>
+  <p>Disponibles de inmediato.</p>
+</Appear>
+
+---
+
+export default Layout;
+
+### Reglas
+
+<ol>
+  <Appear>
+    <li>Usa los Hooks solo en el nivel superior</li>
+    <li>Usa los Hooks solo en funciones de React</li>
+  </Appear>
+</ol>
+
+---
+
+export default Layout;
+
+<Split>
+  <ul style={{margin: '0 100px'}}>
+    <li>useState</li>
+    <li>useEffect</li>
+    <li>useRef</li>
+    <li>...</li>
+    <li>use*</li>
+  </ul>
+
+  <ul style={{margin: '0 100px'}}>
+    <li>useReducer</li>
+    <li>useContext</li>
+    <li>useMemo</li>
+    <li>useLayoutEffect</li>
+    <li>useCallback</li>
+    <li>useImperativeHandle</li>
+    <li>useDebugValue</li>
+  </ul>
+</Split>
+
+---
+
+<PodcastsSearch />
+
+---
+
+export default Layout;
+
+<div style={{fontSize: '80px'}}>useState</div>
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+---
+
+export default Layout;
+
+<LiveCode
+  title="Hook de estado"
+  code={`() => {
+    const [count, setCount] = React.useState(0);
+    return (
+    <div>
+      <p>Número: {count}</p>
+      <button onClick={() => setCount(count - 1)}>
+        Anterior
+      </button>
+      <button onClick={() => setCount(count + 1)}>
+        Siguiente
+      </button>
+    </div>
+  );
+}`}
+  size="fullscreen"
+  editorProps={{style: {fontSize: '0.4em', background: '#001628'}}}
+  previewProps={{style: {color: '#001628'}}}
+/>
+
+---
+
+export default Layout;
+
+<div style={{fontSize: '80px'}}>useEffect</div>
+
+<Appear>
+  <h3>Ciclos de vida</h3>
+  <p>componentDidMount</p>
+  <p>componentWillUnmount</p>
+  <p>componentDidUpdate</p>
+</Appear>
+
+---
+
+export default Layout;
+
+```jsx
+componentDidMount(){
+  console.log('Montando');
+}
+
+componentWillUnmount(){
+  console.log('Desmontando');
+}
+
+componentDidUpdate(prevProps, prevState){
+  if(prevState.query !== this.state.query){
+    console.log('Cambio de query');
+  }
+}
+```
+
+---
+
+export default Layout;
+
+```jsx
+useEffect(() => {
+  console.log('Montando');
+
+  return () => {
+    console.log('Desmontando');
+  };
+}, [query]);
+```
+
+---
+
+export default Layout;
+
+<div style={{fontSize: '80px'}}>useRef</div>
+
+---
+
+export default Layout;
+
+```jsx
+const elementRef = useRef()
+
+<input ref={elementRef} type="text" value="0">
+```
+
+---
+
+<PodcastsSearchHooks />
+
+---
+
+<ScreenResolution />
+
+---
+
+<div style={{fontSize: '80px'}}>use*</div>
+
+---
+
+<ScreenResolutionHooks />
+
+---
+
+export default Layout;
+
+# ¡Muchas Gracias!

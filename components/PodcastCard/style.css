@@ -1,0 +1,26 @@
+.card {
+  background-color: transparent;
+  width: 25%;
+  height: auto;
+  padding: 15px;
+}
+
+.card__inner {
+  width: 100%;
+}
+
+.card__photo {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.card__name {
+  font-size: 15px;
+  display: block;
+  padding-top: 10px;
+}

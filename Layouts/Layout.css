@@ -1,0 +1,18 @@
+.pioneras__layout {
+  width: '100vw';
+  height: '100vw';
+}
+
+.pioneras_logo {
+  width: 250px;
+  height: 168px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.fixed-bottom-left {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
